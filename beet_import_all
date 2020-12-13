@@ -1,0 +1,14 @@
+#!/bin/sh
+find -name *.cue -exec sh -xec '
+if [[ -e "{}.stamp" ]]; then exit; fi
+WORKDIR=$(mktemp -d)
+WAVE="$(dirname "{}")/$(grep FILE "{}" | sed -e "s/^FILE \"//" -e "s/\" WAVE\s$//")"
+if [[ "${WAVE%.flac}" != "${WAVE}" ]]; then
+  flac -d "${WAVE}"
+  WAVE="${WAVE%.flac}.wav"
+fi
+shnsplit -d "${WORKDIR}" -f "{}" -o flac "${WAVE}"
+beet import "${WORKDIR}"
+rm -rf "${WORKDIR}"
+touch "{}.stamp"
+' \;
