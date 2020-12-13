@@ -3,7 +3,7 @@ name: Build Image
 on: [push, pull_request, workflow_dispatch]
 
 env:
-  ENDPOINT: "fancl20/beet-shntool"
+  ENDPOINT: "fancl20/beets-shntool"
   BRANCH: "master"
 
 jobs:
