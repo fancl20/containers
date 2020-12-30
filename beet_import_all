@@ -1,14 +1,10 @@
 #!/bin/sh
+export BEET_WORKDIR=$(mktemp -d)
 find -name *.cue -exec sh -xec '
-if [[ -e "{}.stamp" ]]; then exit; fi
-WORKDIR=$(mktemp -d)
-WAVE="$(dirname "{}")/$(grep FILE "{}" | sed -e "s/^FILE \"//" -e "s/\" WAVE\s$//")"
-if [[ "${WAVE%.flac}" != "${WAVE}" ]]; then
-  flac -d "${WAVE}"
-  WAVE="${WAVE%.flac}.wav"
-fi
-shnsplit -d "${WORKDIR}" -f "{}" -o flac "${WAVE}"
-beet import "${WORKDIR}"
-rm -rf "${WORKDIR}"
-touch "{}.stamp"
+WAVE_BASEDIR="$(dirname "{}")"
+WAVE="${WAVE_BASEDIR}/$(grep FILE "{}" | sed -e "s/^FILE \"//" -e "s/\" WAVE\s$//")"
+mkdir -p "${BEET_WORKDIR}/${WAVE_BASEDIR}"
+shnsplit -d "${BEET_WORKDIR}/${WAVE_BASEDIR}" -f "{}" -o flac -a "${WAVE}" -- "${WAVE}"
 ' \;
+beet import "${BEET_WORKDIR}"
+rm -rf "${BEET_WORKDIR}"
