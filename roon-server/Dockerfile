@@ -10,4 +10,4 @@ RUN apt-get update \
     && mkdir /app && cd /app \
     && curl http://download.roonlabs.com/builds/RoonServer_linuxx64.tar.bz2 | tar -xjf -
 
-ENTRYPOINT ['/app/RoonServer/start.sh']
+ENTRYPOINT /app/RoonServer/start.sh
