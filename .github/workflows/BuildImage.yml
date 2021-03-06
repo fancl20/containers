@@ -17,7 +17,6 @@ jobs:
           password: ${{ secrets.CR_PAT }}
       - uses: docker/build-push-action@v2
         with:
+          context: ./beets-shntool
           push: true
-          tags: |
-            ghcr.io/fancl20/beets-shntool:latest
-            ghcr.io/fancl20/beets-shntool:${{ github.sha }}
+          tags: ghcr.io/fancl20/beets-shntool:latest
