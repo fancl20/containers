@@ -6,5 +6,5 @@ WAVE="${WAVE_BASEDIR}/$(grep FILE "{}" | sed -e "s/^FILE \"//" -e "s/\" WAVE\s$/
 mkdir -p "${BEET_WORKDIR}/${WAVE_BASEDIR}"
 shnsplit -d "${BEET_WORKDIR}/${WAVE_BASEDIR}" -f "{}" -o flac -a "${WAVE}" -- "${WAVE}"
 ' \;
-beet import "${BEET_WORKDIR}"
+beet import --from-scratch "${BEET_WORKDIR}"
 rm -rf "${BEET_WORKDIR}"
