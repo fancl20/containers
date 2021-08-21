@@ -17,17 +17,23 @@ jobs:
           registry: ghcr.io
           username: ${{ secrets.CR_USER }}
           password: ${{ secrets.CR_PAT }}
-      - uses: docker/build-push-action@v2
+      - name: build beets-shntool
+        continue-on-error: true
+        uses: docker/build-push-action@v2
         with:
           context: ./images/beets-shntool
           push: true
           tags: ghcr.io/fancl20/beets-shntool:latest
-      - uses: docker/build-push-action@v2
+      - name: build coding-workspace
+        continue-on-error: true
+        uses: docker/build-push-action@v2
         with:
           context: ./images/coding-workspace
           push: true
           tags: ghcr.io/fancl20/coding-workspace:latest
-      - uses: docker/build-push-action@v2
+      - name: build roon-server
+        continue-on-error: true
+        uses: docker/build-push-action@v2
         with:
           context: ./images/roon-server
           push: true
