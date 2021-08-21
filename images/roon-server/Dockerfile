@@ -1,6 +1,5 @@
-LABEL org.opencontainers.image.source https://github.com/fancl20/containers
-
 FROM docker.io/library/debian
+LABEL org.opencontainers.image.source https://github.com/fancl20/containers
 
 ENV ROON_DATAROOT /data
 ENV ROON_ID_DIR /data
