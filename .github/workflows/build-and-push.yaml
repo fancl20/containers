@@ -1,4 +1,4 @@
-name: build and push
+name: Build and Push
 
 on:
   push:
@@ -17,21 +17,28 @@ jobs:
           registry: ghcr.io
           username: ${{ secrets.CR_USER }}
           password: ${{ secrets.CR_PAT }}
-      - name: build beets-shntool
+      - name: Build beets-shntool
         continue-on-error: true
         uses: docker/build-push-action@v2
         with:
           context: ./images/beets-shntool
           push: true
           tags: ghcr.io/fancl20/beets-shntool:latest
-      - name: build coding-workspace
+      - name: Build coding-workspace
         continue-on-error: true
         uses: docker/build-push-action@v2
         with:
           context: ./images/coding-workspace
           push: true
           tags: ghcr.io/fancl20/coding-workspace:latest
-      - name: build roon-server
+      - name: Build luigi
+        continue-on-error: true
+        uses: docker/build-push-action@v2
+        with:
+          context: ./images/luigi
+          push: true
+          tags: ghcr.io/fancl20/luigi:latest
+      - name: Build roon-server
         continue-on-error: true
         uses: docker/build-push-action@v2
         with:

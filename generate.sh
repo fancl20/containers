@@ -1,7 +1,7 @@
 #!/bin/sh
 
 cat > .github/workflows/build-and-push.yaml <<EOF
-name: build and push
+name: Build and Push
 
 on:
   push:
@@ -24,7 +24,7 @@ EOF
 
 for IMAGE in $(ls images); do
 cat >> .github/workflows/build-and-push.yaml <<EOF
-      - name: build ${IMAGE}
+      - name: Build ${IMAGE}
         continue-on-error: true
         uses: docker/build-push-action@v2
         with:

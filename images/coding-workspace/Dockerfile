@@ -1,4 +1,4 @@
-FROM debian:testing
+FROM docker.io/library/debian:testing
 LABEL org.opencontainers.image.source https://github.com/fancl20/containers
 
 ADD scripts /tmp/scripts
