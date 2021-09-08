@@ -6,7 +6,7 @@ mknod /dev/net/tun c 10 200
 chmod 600 /dev/net/tun
 
 # Generate config
-if [ -f /etc/config/config.conf ]; then
+if [ -f /etc/config/config.yaml ]; then
   cp /etc/config/config.yaml /root/.config/clash/config.yaml
 fi
 if [ -f /vault/secrets/proxies ]; then
