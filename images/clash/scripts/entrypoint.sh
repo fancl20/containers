@@ -7,7 +7,7 @@ chmod 600 /dev/net/tun
 
 # Append proxies to the config
 if [ -f /vault/secrets/proxies ]; then
-  cat /vault/secrets/ >> /root/.config/clash/config.yaml
+  cat /vault/secrets/proxies >> /root/.config/clash/config.yaml
 fi
 
 # setup_tun.sh will wait until utun available and setup route table
