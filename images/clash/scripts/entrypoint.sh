@@ -5,7 +5,10 @@ mkdir -p /dev/net
 mknod /dev/net/tun c 10 200
 chmod 600 /dev/net/tun
 
-# Append proxies to the config
+# Generate config
+if [ -f /etc/config/config.conf ]; then
+  cp /etc/config /root/.config/clash/config.yaml
+fi
 if [ -f /vault/secrets/proxies ]; then
   cat /vault/secrets/proxies >> /root/.config/clash/config.yaml
 fi

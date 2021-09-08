@@ -16,7 +16,6 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     # Cleanup
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 
-COPY config.yaml /root/.config/clash/
 COPY scripts /root/scripts/
 
 ENTRYPOINT ["dumb-init"]
