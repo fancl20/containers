@@ -19,4 +19,4 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
 
 COPY scripts /root/
 
-CMD ["dumb-init"]
+ENTRYPOINT ["dumb-init"]
