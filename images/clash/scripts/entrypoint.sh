@@ -7,7 +7,7 @@ chmod 600 /dev/net/tun
 
 # Generate config
 if [ -f /etc/config/config.conf ]; then
-  cp /etc/config /root/.config/clash/config.yaml
+  cp /etc/config/config.yaml /root/.config/clash/config.yaml
 fi
 if [ -f /vault/secrets/proxies ]; then
   cat /vault/secrets/proxies >> /root/.config/clash/config.yaml
