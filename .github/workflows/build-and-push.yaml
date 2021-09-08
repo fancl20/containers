@@ -24,6 +24,13 @@ jobs:
           context: ./images/beets-shntool
           push: true
           tags: ghcr.io/fancl20/beets-shntool:latest
+      - name: Build clash
+        continue-on-error: true
+        uses: docker/build-push-action@v2
+        with:
+          context: ./images/clash
+          push: true
+          tags: ghcr.io/fancl20/clash:latest
       - name: Build coding-workspace
         continue-on-error: true
         uses: docker/build-push-action@v2

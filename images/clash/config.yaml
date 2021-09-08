@@ -1,0 +1,27 @@
+external-controller: 0.0.0.0:9090
+external-ui: clash-dashboard-gh-pages
+
+interface-name: net1
+
+tun:
+  enable: true
+  stack: gvisor
+
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+    enhanced-mode: fake-ip 
+    fake-ip-range: 198.18.0.1/16
+  nameserver:
+    - udp://192.168.1.1:53
+
+mode: script
+script:
+  code: |
+    def main(ctx, metadata):
+      ip = metadata["dst_ip"] or ctx.resolve_ip(metadata["host"])
+      if ip == "":
+        return "DIRECT"
+      if metadata["network"] == "udp" and ctx.geoip(ip) == "CN":
+        return "JP1-JP2"
+      return "DIRECT"
