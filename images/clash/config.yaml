@@ -25,3 +25,5 @@ script:
       if metadata["network"] == "udp" and ctx.geoip(ip) == "CN":
         return "JP1-JP2"
       return "DIRECT"
+
+# Proxies will be appended at start time

@@ -17,7 +17,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 
 COPY config.yaml /root/.config/clash/
-COPY scripts /root/
+COPY scripts /root/scripts/
 
 ENTRYPOINT ["dumb-init"]
 CMD ["/root/scripts/entrypoint.sh"]
