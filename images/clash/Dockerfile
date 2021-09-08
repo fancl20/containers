@@ -2,7 +2,7 @@ FROM docker.io/library/debian:testing
 LABEL org.opencontainers.image.source https://github.com/fancl20/containers
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y \
-      curl jq iproute2 nftables procps dumb-init && \
+      iproute2 nftables procps curl jq unzip dumb-init && \
     # Install clash premium
     mkdir -p /opt/bin && \
     curl -s --fail -L $(curl -s --fail -H "Accept: application/vnd.github.v3+json" \
