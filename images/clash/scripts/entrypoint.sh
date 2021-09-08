@@ -14,6 +14,6 @@ if [ -f /vault/secrets/proxies ]; then
 fi
 
 # setup_tun.sh will wait until utun available and setup route table
-/root/scripts/setup_tun.sh &
+{ /root/scripts/setup_tun.sh & } &
 
 exec /opt/bin/clash
