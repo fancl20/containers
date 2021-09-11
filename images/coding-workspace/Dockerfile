@@ -4,7 +4,7 @@ LABEL org.opencontainers.image.source https://github.com/fancl20/containers
 ADD scripts /tmp/scripts
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y \
-        dumb-init openssh-server curl git jq fish build-essential && \
+        dumb-init openssh-server curl git jq fish build-essential python3-pip && \
     mkdir /var/run/sshd && \
     # Install commonly used cross projects' dependencies
     curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && \
@@ -22,6 +22,8 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     git clone --recurse-submodules https://github.com/zigtools/zls /opt/zls && \
     (cd /opt/zls && zig build) && \
     ln -s /opt/zls/zig-out/bin/zls /usr/local/bin/ && \
+    # Install luigi
+    python3 -m pip install autopep8 luigi && \
     # Cleanup
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 
