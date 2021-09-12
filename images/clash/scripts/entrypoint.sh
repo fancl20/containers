@@ -15,5 +15,6 @@ fi
 
 # setup_tun.sh will wait until utun available and setup route table
 { /root/scripts/setup_tun.sh & } &
+wait $!
 
 exec /opt/bin/clash
