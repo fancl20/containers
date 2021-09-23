@@ -7,8 +7,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
         dumb-init openssh-server curl git jq fish build-essential python3-pip && \
     mkdir /var/run/sshd && \
     # Install commonly used cross projects' dependencies
-    # TODO: Node installation is broken https://github.com/nodesource/distributions/issues/1258
-    # curl -fsSL https://deb.nodesource.com/setup_current.x | bash - && \
+    curl -fsSL https://deb.nodesource.com/setup_current.x | bash - && \
     apt-get update && apt-get install -y \
     clang cmake make pkg-config \
     golang && \
