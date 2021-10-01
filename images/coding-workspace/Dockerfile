@@ -10,8 +10,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     curl -fsSL https://deb.nodesource.com/setup_current.x | bash - && \
     apt-get update && apt-get install -y \
     clang cmake make pkg-config \
-    golang && \
-    # golang nodejs && \
+    golang nodejs && \
     # Install terraform
     python3 /tmp/scripts/install_terraform.py && \
     # Install zig
@@ -21,7 +20,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     | xargs curl | tar --strip-components=1 -xJC /opt/zig && \
     ln -s /opt/zig/zig /usr/local/bin/ && \
     git clone --recurse-submodules https://github.com/zigtools/zls /opt/zls && \
-    (cd /opt/zls && zig build) && \
+    (cd /opt/zls && zig build -Dcpu=goldmont_plus) && \
     mv /opt/zls/zig-out/bin/zls /usr/local/bin/ && \
     # Install luigi
     python3 -m pip install autopep8 luigi && \
