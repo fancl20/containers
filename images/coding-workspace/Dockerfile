@@ -22,8 +22,6 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     git clone --recurse-submodules https://github.com/zigtools/zls /opt/zls && \
     (cd /opt/zls && zig build -Dcpu=x86_64_v2) && \
     mv /opt/zls/zig-out/bin/zls /usr/local/bin/ && \
-    # Install luigi
-    python3 -m pip install autopep8 luigi && \
     # Cleanup
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 
