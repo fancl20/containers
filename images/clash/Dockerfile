@@ -13,10 +13,9 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     mkdir -p /root/.config/clash/ && \
     curl -s --fail -L -o /tmp/clash-dashboard.zip https://github.com/Dreamacro/clash-dashboard/archive/gh-pages.zip  && \
     unzip /tmp/clash-dashboard.zip -d /root/.config/clash/ && rm /tmp/clash-dashboard.zip && \
+    curl -o /root/.config/clash/Country.mmdb https://github.com/Dreamacro/maxmind-geoip/releases/latest/download/Country.mmdb && \
     # Cleanup
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 
-COPY scripts /root/scripts/
-
 ENTRYPOINT ["dumb-init"]
-CMD ["/root/scripts/entrypoint.sh"]
+CMD ["/opt/bin/clash"]
