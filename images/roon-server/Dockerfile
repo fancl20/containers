@@ -9,6 +9,6 @@ RUN apt-get update \
     && apt-get -y install bash curl bzip2 ffmpeg cifs-utils alsa-utils libicu67 \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && mkdir /app && cd /app \
-    && curl http://download.roonlabs.com/builds/RoonServer_linuxx64.tar.bz2 | tar -xjf -
+    && curl -L http://download.roonlabs.com/builds/RoonServer_linuxx64.tar.bz2 | tar -xjf -
 
 ENTRYPOINT /app/RoonServer/start.sh
