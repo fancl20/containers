@@ -13,6 +13,8 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     mkdir -p /root/.config/clash/ && \
     curl -s --fail -L -o /tmp/clash-dashboard.zip https://github.com/Dreamacro/clash-dashboard/archive/gh-pages.zip  && \
     unzip /tmp/clash-dashboard.zip -d /root/.config/clash/ && rm /tmp/clash-dashboard.zip && \
+    # Install beancount
+    pip3 install git+https://github.com/beancount/beancount#egg=beancount
     # Cleanup
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 
