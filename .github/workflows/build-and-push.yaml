@@ -38,6 +38,13 @@ jobs:
           context: ./images/coding-workspace
           push: true
           tags: ghcr.io/fancl20/coding-workspace:latest
+      - name: Build fava
+        continue-on-error: true
+        uses: docker/build-push-action@v2
+        with:
+          context: ./images/fava
+          push: true
+          tags: ghcr.io/fancl20/fava:latest
       - name: Build luigi
         continue-on-error: true
         uses: docker/build-push-action@v2
