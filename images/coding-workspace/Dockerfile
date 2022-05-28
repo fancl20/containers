@@ -13,6 +13,8 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     golang nodejs && \
     # Install terraform
     python3 /tmp/scripts/install_terraform.py && \
+    # Install beancount
+    pip3 install git+https://github.com/beancount/beancount#egg=beancount && \
     # Install zig
     mkdir -p /opt/zig && \
     curl -s https://ziglang.org/download/index.json \
