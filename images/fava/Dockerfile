@@ -4,7 +4,9 @@ FROM python:alpine as builder
 LABEL org.opencontainers.image.source https://github.com/fancl20/containers
 
 RUN apk add --update libxml2-dev libxslt-dev gcc musl-dev g++
-RUN pip install --prefix="/install" fava
+
+# TODO: Pin beancount due to https://github.com/beancount/beancount/issues/716
+RUN pip install --prefix="/install" beancount==2.3.4 fava
 
 FROM python:alpine
 
