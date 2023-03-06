@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-alpine:3.14 as buildstage
+FROM ghcr.io/linuxserver/baseimage-alpine:3.15 as buildstage
 
 RUN apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing \
     shntool && cp /usr/bin/shnsplit /root/
