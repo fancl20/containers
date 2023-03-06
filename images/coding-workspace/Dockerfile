@@ -3,8 +3,11 @@ LABEL org.opencontainers.image.source https://github.com/fancl20/containers
 
 ADD scripts /tmp/scripts
 
+ENV PIPX_HOME=/opt/pipx
+ENV PIPX_BIN_DIR=/usr/local/bin
+
 RUN apt-get update && apt-get upgrade -y && apt-get install -y \
-        dumb-init openssh-server curl wget git jq fish build-essential python3-pip && \
+        dumb-init openssh-server curl wget git jq fish build-essential python3-venv pipx && \
     mkdir /var/run/sshd && \
     # Install commonly used cross projects' dependencies
     curl -fsSL https://deb.nodesource.com/setup_current.x | bash - && \
@@ -14,7 +17,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     # Install terraform
     python3 /tmp/scripts/install_terraform.py && \
     # Install beancount
-    pip3 install git+https://github.com/beancount/beancount#egg=beancount && \
+    pipx install git+https://github.com/beancount/beancount#egg=beancount && \
     # Install zig
     mkdir -p /opt/zig && \
     curl -s https://ziglang.org/download/index.json \
