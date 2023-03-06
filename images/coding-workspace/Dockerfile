@@ -7,7 +7,7 @@ ENV PIPX_HOME=/opt/pipx
 ENV PIPX_BIN_DIR=/usr/local/bin
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y \
-        dumb-init openssh-server curl wget git jq fish build-essential python3-venv pipx && \
+        dumb-init openssh-server curl wget git jq fish build-essential python3-dev python3-venv pipx && \
     mkdir /var/run/sshd && \
     # Install commonly used cross projects' dependencies
     curl -fsSL https://deb.nodesource.com/setup_current.x | bash - && \
