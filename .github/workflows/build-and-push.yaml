@@ -18,42 +18,36 @@ jobs:
           username: ${{ secrets.CR_USER }}
           password: ${{ secrets.CR_PAT }}
       - name: Build beets-shntool
-        continue-on-error: true
         uses: docker/build-push-action@v4
         with:
           context: ./images/beets-shntool
           push: true
           tags: ghcr.io/fancl20/beets-shntool:latest
       - name: Build clash
-        continue-on-error: true
         uses: docker/build-push-action@v4
         with:
           context: ./images/clash
           push: true
           tags: ghcr.io/fancl20/clash:latest
       - name: Build coding-workspace
-        continue-on-error: true
         uses: docker/build-push-action@v4
         with:
           context: ./images/coding-workspace
           push: true
           tags: ghcr.io/fancl20/coding-workspace:latest
       - name: Build fava
-        continue-on-error: true
         uses: docker/build-push-action@v4
         with:
           context: ./images/fava
           push: true
           tags: ghcr.io/fancl20/fava:latest
       - name: Build luigi
-        continue-on-error: true
         uses: docker/build-push-action@v4
         with:
           context: ./images/luigi
           push: true
           tags: ghcr.io/fancl20/luigi:latest
       - name: Build roon-server
-        continue-on-error: true
         uses: docker/build-push-action@v4
         with:
           context: ./images/roon-server

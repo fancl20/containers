@@ -25,7 +25,6 @@ EOF
 for IMAGE in $(ls images); do
 cat >> .github/workflows/build-and-push.yaml <<EOF
       - name: Build ${IMAGE}
-        continue-on-error: true
         uses: docker/build-push-action@v4
         with:
           context: ./images/${IMAGE}
