@@ -35,5 +35,6 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
 # To get latest stable release of zig:
 #   jq --raw-output 'del(.master) | to_entries | sort_by(.value.date) | .[-1].value."x86_64-linux".tarball'
 
-SHELL ["/usr/bin/fish"]
+ENV SHELL=/usr/bin/fish
+
 ENTRYPOINT ["dumb-init"]
